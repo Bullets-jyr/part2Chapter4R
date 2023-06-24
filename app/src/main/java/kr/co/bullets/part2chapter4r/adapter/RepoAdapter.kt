@@ -10,7 +10,7 @@ import kr.co.bullets.part2chapter4r.databinding.ItemUserBinding
 import kr.co.bullets.part2chapter4r.model.Repo
 import kr.co.bullets.part2chapter4r.model.User
 
-class RepoAdapter :
+class RepoAdapter(private val onClick: (Repo) -> Unit) :
     ListAdapter<Repo, RepoAdapter.RepoViewHoler>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHoler {
@@ -34,6 +34,10 @@ class RepoAdapter :
             binding.descriptionTextView.text = repo.description
             binding.starCountTextView.text = repo.starCount.toString()
             binding.forkCountTextView.text = "${repo.forksCount}"
+
+            binding.root.setOnClickListener {
+                onClick(repo)
+            }
         }
     }
 
