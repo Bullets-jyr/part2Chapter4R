@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.co.bullets.part2chapter4r.databinding.ItemUserBinding
 import kr.co.bullets.part2chapter4r.model.User
 
-class UserAdapter : ListAdapter<User, UserAdapter.UserViewHoler>(diffUtil) {
+class UserAdapter(val onClick: (User) -> Unit) : ListAdapter<User, UserAdapter.UserViewHoler>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHoler {
         return UserViewHoler(
@@ -28,6 +28,9 @@ class UserAdapter : ListAdapter<User, UserAdapter.UserViewHoler>(diffUtil) {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: User) {
             binding.usernameTextView.text = item.username
+            binding.root.setOnClickListener {
+                onClick(item)
+            }
         }
     }
 
