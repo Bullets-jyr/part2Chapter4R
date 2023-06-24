@@ -9,11 +9,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GithubService {
-    @Headers("Authorization: Bearer <YOUR-TOKEN>")
+    @Headers("Authorization: Bearer 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")
     @GET("/users/{username}/repos")
     fun listRepos(@Path("username") username: String): Call<List<Repo>>
 
-    @Headers("Authorization: Bearer <YOUR-TOKEN>")
+    @Headers("Authorization: Bearer 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")
     @GET("/search/users")
     fun searchUsers(@Query("q") q: String): Call<UserDto>
 }
